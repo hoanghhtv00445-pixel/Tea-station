@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tea Station</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Catamaran:400,700|Grand+Hotel");
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 62.5%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Catamaran", sans-serif;
+            font-size: 1.6rem;
+            line-height: 1.5;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .btn {
+            display: inline-block;
+            background: transparent;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.2rem;
+            color: #3a3e3b;
+            border: 2px solid #3a3e3b;
+            padding: 0.9rem 1.6rem;
+            transition: all 0.3s linear;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            color: #e5e5e5;
+            background: #3a3e3b;
+        }
+
+        .heading_first {
+            font-family: "Grand Hotel", cursive;
+            font-size: 3rem;
+            color: #698f3f;
+            letter-spacing: 0.2rem;
+            text-transform: capitalize;
+            margin-bottom: 0.5rem;
+        }
+
+        .heading_second {
+            font-size: 3rem;
+            text-transform: uppercase;
+            color: #3a3e3b;
+            letter-spacing: 0.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .heading-second--white {
+            color: #fff;
+        }
+
+        .nav-btn {
+            position: fixed;
+            top: 5%;
+            left: 5%;
+            font-size: 2.5rem;
+            cursor: pointer;
+            z-index: 100; 
+        }
+
+        .nav_list {
+            list-style: none;
+            padding: 20px;
+            background: #f1f5f8;
+        }
+
+        .nav_item {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .nav_link {
+            font-family: "Catamaran", sans-serif;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 0.1rem;
+            color: #3a3e3b;
+        }
+
+        .nav_link:hover {
+            color: #698f3f;
+        }
+
+        /* HEADER */
+        .header {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/pexels-pixabay-327136.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .header h2 {
+            font-family: "Grand Hotel", cursive;
+            font-size: 4rem;
+            color: #698f3f;
+            letter-spacing: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header h1 {
+            font-family: "Catamaran", sans-serif;
+            text-transform: uppercase;
+            color: #fff;
+            font-size: 4rem;
+            letter-spacing: 0.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .header .btn {
+            background: #fff;
+            color: #3a3e3b;
+        }
+        
+        .header .btn:hover {
+            background: transparent;
+            color: #fff;
+            border-color: #fff;
+        }
+
+        /* FEATURES (Lab 3.1) */
+        #features {
+            width: 100%;
+            background: #f1f5f8;
+            padding: 4rem 0;
+        }
+
+        .feature_item {
+            width: 25%;
+            float: left;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .feature_title {
+            text-transform: uppercase;
+            font-size: 1.6rem;
+            letter-spacing: 0.1rem;
+            color: #698f3f;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .feature_text {
+            font-size: 1.4rem;
+            color: #3a3e3b;
+            line-height: 1.8;
+        }
+
+        /* ABOUT */
+        #about {
+            width: 100%;
+        }
+
+        .about_left, .about_right {
+            width: 50%;
+            float: left;
+            height: 100%; 
+        }
+
+        .about_left img {
+            width: 100%;
+            display: block;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about_right {
+            background: #fff;
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about_text {
+            font-size: 1.6rem;
+            color: #3a3e3b;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        /* PRODUCTS */
+        #product {
+            background-color: #3a3e3b;
+            color: #fff;
+            padding: 4rem 0;
+        }
+
+        .product_item {
+            width: 33.33%;
+            float: left;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .product_item img {
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+            display: block;
+            width: 100%;
+        }
+
+        .products_text {
+            color: #fff;
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .product-item_title {
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 1.6rem;
+            letter-spacing: 0.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-item_price {
+            font-family: "Grand Hotel", cursive;
+            font-size: 2.2rem;
+            color: #698f3f;
+            font-weight: 700;
+        }
+
+        .product-item_price span {
+            margin-right: 0.5rem;
+            color: #fff;
+        }
+
+        .product_btn {
+            color: #fff;
+            border-color: #fff;
+        }
+        
+        .product_btn:hover {
+            color: #3a3e3b;
+            background: #fff;
+        }
+
+       
+        .contact {
+            background: #f1f5f8;
+            padding: 4rem 0;
+        }
+
+        .contact-info, .contact-form-container {
+            width: 50%;
+            float: left;
+            padding: 2rem;
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item .heading_first {
+            font-size: 2.5rem;
+        }
+
+        .contact-text {
+            text-transform: uppercase;
+            font-size: 1.4rem;
+            letter-spacing: 0.1rem;
+            color: #3a3e3b;
+        }
+
+        .contact-form {
+            background: #fff;
+            text-align: center;
+            padding: 3rem;
+            border-radius: 0.5rem;
+        }
+
+        .contact-form h3 {
+            color: #3a3e3b;
+            margin-bottom: 2rem;
+        }
+
+        .form-control {
+            width: 100%;
+            background: #f1f5f8;
+            border: none;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: "Catamaran", sans-serif;
+            font-size: 1.4rem;
+        }
+
+        .form-control::placeholder {
+            text-transform: uppercase;
+            color: #3a3e3b;
+            letter-spacing: 0.1rem;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #698f3f;
+            color: #fff;
+            border-color: #698f3f;
+        }
+
+        .submit-btn:hover {
+            background: transparent;
+            color: #698f3f;
+        }
+    </style>
+</head>
+<body>
+
+    <ul class="nav_list">
+        <li class="nav_item"><a href="#header" class="nav_link">Home</a></li>
+        <li class="nav_item"><a href="#features" class="nav_link">Features</a></li>
+        <li class="nav_item"><a href="#about" class="nav_link">About</a></li>
+        <li class="nav_item"><a href="#product" class="nav_link">Products</a></li>
+        <li class="nav_item"><a href="#contact" class="nav_link">Contact</a></li>
+    </ul>
+
+    <div class="header" id="header">
+        <h2>Over one hundred flavors of tea</h2>
+        <h1>Specially crafted tea</h1>
+        <a href="#about" class="btn">Explore</a>
+    </div>
+
+    <div id="features" class="clearfix">
+        <div class="feature_item">
+            <h4 class="feature_title">Made with love</h4>
+            <p class="feature_text">Our tea is made with love, from the collection of the leaves to the brewing.</p>
+        </div>
+        <div class="feature_item">
+            <h4 class="feature_title">Relaxation</h4>
+            <p class="feature_text">Set aside anxiety and relax after a hard day with a cup of hot tea in your hands.</p>
+        </div>
+        <div class="feature_item">
+            <h4 class="feature_title">Energy</h4>
+            <p class="feature_text">Our tea will energize you with vitamins and invigorate the rest of the day.</p>
+        </div>
+        <div class="feature_item">
+            <h4 class="feature_title">Family recipe</h4>
+            <p class="feature_text">All our recipes are passed down from generation to generation for a long time.</p>
+        </div>
+    </div>
+
+    <div id="about" class="clearfix">
+        <div class="about_left">
+            <img src="img/pexels-ivan-s-8951983.jpg" alt="About Us">
+        </div>
+        <div class="about_right">
+            <h3 class="heading_first">About Our</h3>
+            <h2 class="heading_second">Tea station</h2>
+            <p class="about_text">
+                Once upon a time we only had a couple of teapots and enjoyed tea only with our family. Over time, we were able to afford to buy a small tea plantation.
+            </p>
+            <p class="about_text">
+                Now we have a whole teahouse and we delight many people with delicious and hot tea. We serve black long tea, relaxing green and jasmine tea, tea with spices and many others.
+            </p>
+            <a href="#features" class="btn">Learn more</a>
+        </div>
+    </div>
+
+    <div id="product" class="clearfix">
+        <div class="product_item">
+            <h3 class="heading_first">Check Out</h3>
+            <h2 class="heading_second heading-second--white">Our products</h2>
+            <p class="products_text">
+                Our assortment includes long tea, relaxing and invigorating green tea with spices, lemon juice, jasmine, cinnamon and anise, milk tea and many others.
+            </p>
+            <a href="#" class="btn product_btn">Inventory</a>
+        </div>
+        <div class="product_item">
+            <img src="img/pexels-mareefe-1638280.jpg" alt="Black long tea">
+            <h5 class="product-item_title">Black long tea</h5>
+            <p class="product-item_price"><span>$</span> 3.99</p>
+        </div>
+        <div class="product_item">
+            <img src="img/pexels-son-tung-tran-17375059-7018211.jpg" alt="Green tea">
+            <h5 class="product-item_title">Green tea with jasmine</h5>
+            <p class="product-item_price"><span>$</span> 4.99</p>
+        </div>
+    </div>
+
+    <div class="contact clearfix" id="contact">
+        <div class="contact-info">
+            <div class="contact-item">
+                <h3 class="heading_first">Address</h3>
+                <p class="contact-text">
+                    Nguyễn văn tiết <br>
+                    FPT Polyschool, 100
+                </p>
+            </div>
+            <div class="contact-item">
+                <h3 class="heading_first">Email</h3>
+                <p class="contact-text">
+                    hoanghhtv00445@email.com
+                </p>
+            </div>
+            <div class="contact-item">
+                <h3 class="heading_first">Telephone</h3>
+                <p class="contact-text">
+                    +84 123 456 789
+                </p>
+            </div>
+        </div>
+        <div class="contact-form-container">
+            <div class="contact-form">
+                <h3 class="heading_first">Contact us</h3>
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="name" class="form-control" name="name">
+                        <input type="email" placeholder="email" class="form-control" name="email">
+                        <textarea name="message" placeholder="message" class="form-control" rows="5"></textarea>
+                    </div>
+                    <button type="submit" class="btn submit-btn">submit here</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
